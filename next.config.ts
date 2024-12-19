@@ -1,17 +1,16 @@
 import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  async rewrites() {
+  async headers() {
     return [
       {
         source: '/:path*',
-        has: [
+        headers: [
           {
-            type: 'host',
-            value: '(?<subdomain>.*).jpngn.com',
+            key: 'Access-Control-Allow-Origin',
+            value: '*', // Allows all origins, adjust as needed
           },
         ],
-        destination: '/api/subdomain?subdomain=:subdomain&path=:path*',
       },
     ];
   },

@@ -6,8 +6,17 @@ import { bandMembers } from '@/members/members';
 
 export default function BandMemberPage({ params }: PageProps
 ) {
-  //@ts-expect-error this can be anything...
-  const member = bandMembers.find(m => m.subdomain === params?.subdomain);
+  const member = bandMembers.find(async (m) => {
+    const subdomain = await params?.then((p) => p.subdomain);
+
+    // Handle undefined or null subdomain case if needed
+    if (!subdomain) {
+      console.error("Subdomain is undefined");
+      return false;
+    }
+
+    return m.subdomain === subdomain;
+  });
 
   if (!member) {
     return <div>Band member not found</div>;
