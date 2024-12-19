@@ -1,4 +1,4 @@
-import { BandMember } from '../data/bandMembers';
+ import { BandMember } from '@/members/members';
 import Link from 'next/link';
 
 export default function BandMemberInfo({ member }: { member: BandMember }) {
