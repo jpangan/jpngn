@@ -6,7 +6,7 @@ import { bandMembers } from '@/members/members';
 
 export default function BandMemberPage({ params }: PageProps
 ) {
-  //@ts-ignore
+  //@ts-expect-error this can be anything...
   const member = bandMembers.find(m => m.subdomain === params?.subdomain);
 
   if (!member) {
