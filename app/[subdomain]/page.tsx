@@ -4,10 +4,12 @@ import { bandMembers } from '@/members/members';
 
 
 
-export default function BandMemberPage({ params }: PageProps
+export default function Page({ params }: PageProps
 ) {
   const member = bandMembers.find(async (m) => {
     const subdomain = await params?.then((p) => p.subdomain);
+
+    console.log("JPN: subdomain: ", subdomain);
 
     // Handle undefined or null subdomain case if needed
     if (!subdomain) {
@@ -17,6 +19,9 @@ export default function BandMemberPage({ params }: PageProps
 
     return m.subdomain === subdomain;
   });
+
+  console.log("JPN: member: ", member);
+
 
   if (!member) {
     return <div>Band member not found</div>;

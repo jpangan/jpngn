@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { subdomains } from './members/members';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl;
@@ -8,7 +9,7 @@ export function middleware(request: NextRequest) {
 
   // Handle localhost with port
   if (hostname.includes('localhost')) {
-    if (['jpj', 'plant', 'page', 'bonzo'].includes(subdomain)) {
+    if (subdomains.includes(subdomain)) {
       url.pathname = `/${subdomain}${url.pathname}`;
       return NextResponse.rewrite(url);
     }
