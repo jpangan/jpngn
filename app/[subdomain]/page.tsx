@@ -20,9 +20,6 @@ export default function Page({ params }: PageProps
     return m.subdomain === subdomain;
   });
 
-  console.log("JPN: member: ", member);
-
-
   if (!member) {
     return <div>Band member not found</div>;
   }

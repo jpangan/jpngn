@@ -91,4 +91,8 @@ export const bandMembers: BandMember[] = [
   }
 ];
 
+/**
+ * Extracted the subdomains from the band members' object
+ *
+ * */
 export const subdomains = bandMembers.map(item => item.subdomain)

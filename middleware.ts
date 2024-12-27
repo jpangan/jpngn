@@ -7,13 +7,13 @@ export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   const subdomain = hostname.split('.')[0];
 
-  // Handle localhost with port
-  if (hostname.includes('localhost')) {
-    if (subdomains.includes(subdomain)) {
+
+  /**
+   * Check if there is a subdomain provided and that subdomain belongs to the pros.
+  */
+  if (subdomains && subdomains?.includes?.(subdomain)) {
       url.pathname = `/${subdomain}${url.pathname}`;
       return NextResponse.rewrite(url);
-    }
-    return NextResponse.next();
   }
 
   return NextResponse.next();
